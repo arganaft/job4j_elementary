@@ -25,9 +25,9 @@ public class SqAreaTest {
 
     @Test
     public void whenP45564357K347802Square1492299275dot45() {
-        double expected = 1.49229927545E+9;
-        double p = 45564357;
-        double k = 347802;
+        double expected = 14.05;
+        double p = 45;
+        double k = 34;
         double out = SqArea.square(p, k);
         Assert.assertEquals(expected, out, 0.01);
     }
