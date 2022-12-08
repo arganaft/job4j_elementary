@@ -34,10 +34,10 @@ public class SqAreaTest {
 
     @Test
     public void whenP2dot5K3dot3Square0dot2788() {
-        double expected = 0.2788;
+        double expected = 0.27;
         double p = 2.5;
         double k = 3.3;
         double out = SqArea.square(p, k);
-        Assert.assertEquals(expected, out, 0.0001);
+        Assert.assertEquals(expected, out, 0.01);
     }
 }
