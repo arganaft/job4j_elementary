@@ -24,7 +24,7 @@ public class SqAreaTest {
     }
 
     @Test
-    public void whenP45564357K347802Square1492299275dot45() {
+    public void whenP45K34Square14dot05() {
         double expected = 14.05;
         double p = 45;
         double k = 34;
@@ -33,7 +33,7 @@ public class SqAreaTest {
     }
 
     @Test
-    public void whenP2dot5K3dot3Square0dot2788() {
+    public void whenP2dot5K3dot3Square0dot27() {
         double expected = 0.27;
         double p = 2.5;
         double k = 3.3;
