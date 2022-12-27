@@ -2,30 +2,32 @@ package ru.job4j.array;
 
 public class JavaNameValidator {
     public static boolean isNameValid(String name) {
-        if (name.length() < 1) {
-            return  false;
-        }
-        for (int i = 0; i < name.toCharArray().length; i++) {
-            int charCod = name.toCharArray()[i];
-            if (i == 0 && !isLowerLatinLetter(charCod)) {
-                return false;
+        boolean valid = true;
+        if (name.length() >= 1 && isLowerLatinLetter(name.toCharArray()[0])) {
+            for (int i = 0; i < name.toCharArray().length; i++) {
+                if (!isCharValid(name.toCharArray()[i])) {
+                    valid = false;
+                    break;
+                }
             }
-            if (!isCharValid(charCod)) {
-                return false;
-            }
+        } else {
+            valid = false;
         }
-        return true;
+
+        return valid;
     }
 
-    public static boolean isCharValid(int i) {
-        return (isSpecialSymbol(i) || isUpperLatinLetter(i) || isLowerLatinLetter(i) || Character.isDigit(i));
+    public static boolean isCharValid(char symbol) {
+        return (isSpecialSymbol(symbol) || isUpperLatinLetter(symbol) || isLowerLatinLetter(symbol) || Character.isDigit(symbol));
     }
 
-    public static boolean isSpecialSymbol(int code) {
+    public static boolean isSpecialSymbol(char symbol) {
+        int code = symbol;
         return (code == 36 || code == 95);
     }
 
-    public static boolean isUpperLatinLetter(int code) {
+    public static boolean isUpperLatinLetter(char symbol) {
+        int code = symbol;
         for (int i = 65; i <= 90; i++) {
             if (code == i) {
                 return true;
@@ -34,12 +36,15 @@ public class JavaNameValidator {
         return false;
     }
 
-    public static boolean isLowerLatinLetter(int code) {
+    public static boolean isLowerLatinLetter(char symbol) {
+        int code = symbol;
+        boolean result = false;
         for (int i = 97; i <= 122; i++) {
             if (code == i) {
-                return true;
+                result = true;
+                break;
             }
         }
-        return false;
+        return result;
     }
 }
