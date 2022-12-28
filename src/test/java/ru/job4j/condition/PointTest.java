@@ -10,44 +10,36 @@ public class PointTest {
     @Test
     public void when00to20then2() {
         double expected = 2;
-        int x1 = 0;
-        int y1 = 0;
-        int x2 = 2;
-        int y2 = 0;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point a = new Point(0, 0);
+        Point b = new Point(0, 2);
+        double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when52to18then7dot21() {
         double expected = 7.21;
-        int x1 = 5;
-        int y1 = 2;
-        int x2 = 1;
-        int y2 = 8;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point a = new Point(5, 2);
+        Point b = new Point(1, 8);
+        double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when543and864to639and742then155dot24174() {
-        double expected = 155.24174;
-        int x1 = 543;
-        int y1 = 864;
-        int x2 = 639;
-        int y2 = 742;
-        double out = Point.distance(x1, y1, x2, y2);
-        Assert.assertEquals(expected, out, 0.00001);
+        double expected = 155.24;
+        Point a = new Point(543, 864);
+        Point b = new Point(639, 742);
+        double out = a.distance(b);
+        Assert.assertEquals(expected, out, 0.01);
     }
 
     @Test
     public void when100and200to300and400then282dot8() {
         double expected = 282.8;
-        int x1 = 100;
-        int y1 = 200;
-        int x2 = 300;
-        int y2 = 400;
-        double out = Point.distance(x1, y1, x2, y2);
+        Point a = new Point(100, 200);
+        Point b = new Point(300, 400);
+        double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.1);
     }
 }
