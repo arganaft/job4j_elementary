@@ -42,4 +42,22 @@ public class PointTest {
         double out = a.distance(b);
         Assert.assertEquals(expected, out, 0.1);
     }
+
+    @Test
+    public void when1And2And3to4and5And6then5dot1() {
+        double expected = 5.1;
+        Point a = new Point(1, 2, 3);
+        Point b = new Point(4, 5, 6);
+        double out = a.distance3d(b);
+        Assert.assertEquals(expected, out, 0.1);
+    }
+
+    @Test
+    public void when42And5And11to4and5And6then38dot3() {
+        double expected = 38.3;
+        Point a = new Point(42, 5, 11);
+        Point b = new Point(4, 5, 6);
+        double out = a.distance3d(b);
+        Assert.assertEquals(expected, out, 0.1);
+    }
 }
