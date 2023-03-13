@@ -2,11 +2,16 @@ package ru.job4j.array;
 
 public class JavaNameValidator {
     public static boolean isNameValid(String name) {
-        boolean valid = name.length() >= 1 && isLowerLatinLetter(name.toCharArray()[0]);
+        boolean valid = name.length() >= 1
+                && isNotUpperLatinLetter(name.charAt(0))
+                && !Character.isDigit(name.charAt(0));
         if (valid) {
-            for (int i = 1; i < name.toCharArray().length; i++) {
-                char symbol = name.toCharArray()[i];
-                if (!(isSpecialSymbol(symbol) || isUpperLatinLetter(symbol) || isLowerLatinLetter(symbol) || Character.isDigit(symbol))) {
+            for (int i = 1; i < name.length(); i++) {
+                int code = name.codePointAt(i);
+                if (isNotSpecialSymbol(code)
+                        && isNotUpperLatinLetter(code)
+                        && isNotLowerLatinLetter(code)
+                        && !Character.isDigit(code)) {
                     valid = false;
                     break;
                 }
@@ -15,27 +20,15 @@ public class JavaNameValidator {
         return valid;
     }
 
-    public static boolean isSpecialSymbol(char symbol) {
-        return ((int) symbol == 36 || (int) symbol == 95);
+    private static boolean isNotSpecialSymbol(int code) {
+        return code != 36 && code != 95;
     }
 
-    public static boolean isUpperLatinLetter(char symbol) {
-        for (int i = 65; i <= 90; i++) {
-            if ((int) symbol == i) {
-                return true;
-            }
-        }
-        return false;
+    private static boolean isNotUpperLatinLetter(int code) {
+        return code < 65 || code > 90;
     }
 
-    public static boolean isLowerLatinLetter(char symbol) {
-        boolean result = false;
-        for (int i = 97; i <= 122; i++) {
-            if ((int) symbol == i) {
-                result = true;
-                break;
-            }
-        }
-        return result;
+    private static boolean isNotLowerLatinLetter(int code) {
+        return code < 97 || code > 122;
     }
 }
